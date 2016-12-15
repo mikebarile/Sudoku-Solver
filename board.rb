@@ -1,3 +1,4 @@
+require "colorize"
 require_relative "tile"
 
 class Board
@@ -56,9 +57,9 @@ class Board
   end
 
   def render
-    puts "  #{(0..8).to_a.join(" ")}"
+    puts "  #{(0..8).to_a.join(" ").colorize(:blue)}"
     grid.each_with_index do |row, idx|
-      puts "#{idx} #{row.join(" ")}"
+      puts "#{idx.to_s.colorize(:blue)} #{row.join(" ")}"
     end
   end
 
