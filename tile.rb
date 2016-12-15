@@ -23,5 +23,4 @@ class Tile
       @value = val
     end
   end
-
 end
