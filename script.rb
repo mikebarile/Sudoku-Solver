@@ -1,9 +1,15 @@
-require_relative "board"
 require_relative "solver"
-
-p "Please enter a file name"
+puts "Please enter a file name"
 file = gets.chomp
 
-board = Board.new(file)
-p "This is the original board:"
-board.render
+solver = Solver.new(Board.new(file))
+puts "\n"
+puts "This is the original board:"
+solver.board.render
+
+solver.solve!
+solver.update_board
+
+puts "\n"
+puts "This is the solved board:"
+solver.board.render

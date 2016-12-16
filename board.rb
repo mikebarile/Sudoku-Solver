@@ -3,7 +3,7 @@ require_relative "tile"
 
 class Board
 
-  attr_reader :grid
+  attr_accessor :grid
 
   def initialize(file)
     @grid = populate_board(file)
@@ -38,8 +38,9 @@ class Board
     rows.transpose
   end
 
-  def square(idx)
+  def square(pos)
     tiles = []
+    idx = (pos[0] / 3)*3 + pos[1] / 3
     x = (idx / 3) * 3
     y = (idx % 3) * 3
 
@@ -52,42 +53,11 @@ class Board
     tiles
   end
 
-  def squares
-    (0..8).to_a.map { |i| square(i) }
-  end
-
   def render
     puts "  #{(0..8).to_a.join(" ").colorize(:blue)}"
     grid.each_with_index do |row, idx|
       puts "#{idx.to_s.colorize(:blue)} #{row.join(" ")}"
     end
-  end
-
-  def size
-    grid.size
-  end
-
-  def solved?
-    rows.all? { |row| set_solved?(row) } &&
-      columns.all? { |col| set_solved?(col) } &&
-      squares.all? { |square| set_solved?(square) }
-  end
-
-  def set_solved?(tiles)
-    vals = tiles.map(&:value)
-    vals.sort == (1..9).to_a
-  end
-
-  def size
-    @grid.size
-  end
-
-  def dup
-    duped_grid = grid.map do |row|
-      row.map {|tile| Tile.new(tile.value)}
-    end
-
-    Board.new(duped_grid)
   end
 
 end
