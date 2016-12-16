@@ -9,6 +9,7 @@ Sudoku Solver is a Ruby script that solves a sudoku puzzle stored in a csv. Sudo
 5. If a tile's sub tree fails to solve the puzzle, reset the tile's value to zero and move back up the tree
 
 The program is broken into four components:
+
 1. sudoku_solver.rb: The executive script
 2. solver.rb: Contains all logic for solving the puzzle
 3. board.rb: Contains logic for initializing and rendering the board
@@ -17,6 +18,7 @@ The program is broken into four components:
 ## Instructions
 
 Follow these steps to run Sudoku Solver locally:
+
 1. Clone this repo locally
 2. Ensure that you have ruby installed ("brew install ruby")
 3. Navigate into the directory via terminal
