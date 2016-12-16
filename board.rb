@@ -1,4 +1,5 @@
 require "colorize"
+require 'csv'
 require_relative "tile"
 
 class Board
@@ -10,12 +11,13 @@ class Board
   end
 
   def populate_board(file)
-    rows = File.readlines(file).map(&:chomp)
+    rows = CSV.read(file)
+
     grid = rows.map do |row|
-      vals = row.split("").map { |char| char.to_i }
+      vals = row.map { |char| char.to_i }
       vals.map { |num| Tile.new(num) }
     end
-
+    
     grid
   end
 

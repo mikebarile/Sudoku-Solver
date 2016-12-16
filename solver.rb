@@ -52,8 +52,8 @@ class Solver
 
   def valid_row?(val, idx)
     row = idx / 9
-    start = row * 9
-    (start..(start + 8)).each do |check_idx|
+    start_idx = row * 9
+    (start_idx..(start_idx + 8)).each do |check_idx|
       return false unless valid?(check_idx, val, idx)
     end
     true
@@ -61,11 +61,11 @@ class Solver
 
   def valid_col?(val, idx)
     col = idx % 9
-    start = 0
+    start_idx = 0
     (1..9).each do
-      check_idx = start + col
+      check_idx = start_idx + col
       return false unless valid?(check_idx, val, idx)
-      start += 9
+      start_idx += 9
     end
     true
   end

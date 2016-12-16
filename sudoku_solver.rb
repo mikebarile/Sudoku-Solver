@@ -1,4 +1,5 @@
 require_relative "solver"
+
 puts "Please enter a file name"
 file = gets.chomp
 
