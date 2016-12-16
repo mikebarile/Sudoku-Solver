@@ -15,7 +15,7 @@ class Solver
     flat_board
   end
 
-  def update_board
+  def unflatten_board!
     new_board = Array.new(9) {Array.new}
     i = 0
     until new_board[8].length == 9
@@ -24,20 +24,24 @@ class Solver
       end
       i += 1
     end
-
     @board.grid = new_board
   end
 
   def solve!
+    #Identify first index w/ value 0
     idx = nil
     @flat.each_with_index do |tile, tile_idx|
       idx = tile_idx if tile.value == 0
     end
     return true unless idx
+
+    #Iterate through potential guesses
     (1..9).each do |guess|
       @flat[idx].value = guess
       return @flat if board_valid?(idx) && solve!
     end
+
+    #Reset value to 0 and move back up the tree
     @flat[idx].value = 0
     false
   end
@@ -84,4 +88,5 @@ class Solver
     return false if check_idx != idx && val == @flat[check_idx].value
     true
   end
+
 end

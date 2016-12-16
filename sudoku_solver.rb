@@ -9,7 +9,7 @@ puts "This is the original board:"
 solver.board.render
 
 solver.solve!
-solver.update_board
+solver.unflatten_board!
 
 puts "\n"
 puts "This is the solved board:"

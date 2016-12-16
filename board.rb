@@ -17,42 +17,8 @@ class Board
       vals = row.map { |char| char.to_i }
       vals.map { |num| Tile.new(num) }
     end
-    
+
     grid
-  end
-
-  def [](pos)
-    row, col = pos
-    @grid[row][col]
-  end
-
-  def []=(pos, value)
-    row, col = pos
-    tile = @grid[row][col]
-    tile.value = value
-  end
-
-  def rows
-    @grid
-  end
-
-  def columns
-    rows.transpose
-  end
-
-  def square(pos)
-    tiles = []
-    idx = (pos[0] / 3)*3 + pos[1] / 3
-    x = (idx / 3) * 3
-    y = (idx % 3) * 3
-
-    (x...x + 3).each do |i|
-      (y...y + 3).each do |j|
-        tiles << self[[i, j]]
-      end
-    end
-
-    tiles
   end
 
   def render
