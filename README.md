@@ -1,4 +1,4 @@
-# Sudoku Solver
+# Sudoku Solver 
 
 Sudoku Solver is a Ruby script that solves a csv sudoku puzzle. Sudoku Solver uses a tree to recursively iterate through every "empty" tile in the grid until it finds a valid solution. The program uses the following methodology to solve the puzzle:
 
